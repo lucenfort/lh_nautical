@@ -7,7 +7,15 @@
 
 ## 🎯 Sobre este Repositório
 
-Este repositório contém a estrutura de pastas e modelos de arquivos organizados para o **Desafio LH Nautical**. Esta estrutura foi desenhada para modularizar as etapas de Ingestão de Dados, Análise SQL, Inteligência Preditiva, Documentação e Visualização Executiva.
+Este repositório contém a resolução técnica completa, modularizada e reproduzível desenvolvida para o **Desafio LH Nautical**, integrante do processo seletivo do **Programa Lighthouse (Indicium AI)**.
+
+---
+
+## 📜 Créditos e Isenção de Responsabilidade
+
+> **📌 Nota de Propriedade Intelectual & Créditos:**  
+> Este projeto foi desenvolvido por **Luciano Silva de Arruda** como solução técnica para o Desafio Prático do **Programa Lighthouse 2026** promovido pela **Indicium AI** ([https://indicium.ai](https://indicium.ai)).  
+> Todos os direitos sobre os datasets brutos (`data/raw/`) e sobre a formulação dos estudos de caso pertencem originalmente à **Indicium AI**. A disponibilização dos arquivos neste repositório tem fins exclusivamente educacionais, de portfólio e de avaliação pública da resolução técnica.
 
 ---
 

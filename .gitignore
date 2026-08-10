@@ -26,8 +26,9 @@ htmlcov/
 .DS_Store
 Thumbs.db
 
-# 📊 Dados Brutos e Arquivos CSV de Grande Porte
+# 📊 Dados Brutos e Arquivos CSV do Desafio
 data/raw/*.csv
+!data/raw/*.csv
 data/1-lh_nautical_csv/
 data/processed/*.csv
 !data/**/.gitkeep
