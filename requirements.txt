@@ -1,0 +1,15 @@
+# ===============================================================================
+# DESAFIO LH NAUTICAL - DEPENDÊNCIAS DO PROJETO
+# Autor: Luciano Silva de Arruda
+# Programa: Lighthouse 2026 (Indicium AI)
+# ===============================================================================
+# Banco de Dados PostgreSQL
+psycopg2-binary>=2.9.0
+
+# Análise e Ciência de Dados (Q6, Q7 — NÃO usar pandas na Q2!)
+pandas>=2.0.0
+numpy>=1.24.0
+scikit-learn>=1.3.0
+
+# Visualização (Dashboard e gráficos auxiliares)
+matplotlib>=3.7.0
