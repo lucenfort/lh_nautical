@@ -1,44 +1,35 @@
-# =============================================================================
-# GITIGNORE — LH NAUTICAL PROJECT
-# Repository: https://github.com/lucenfort/lh_nautical.git
-# =============================================================================
-
-# 🐍 Ambientes Virtuais Python
+# Ambientes Virtuais Python
 .venv/
 venv/
-env/
 ENV/
-*.venv/
-
-# 📦 Caches e Bytecode Python
+env/
 __pycache__/
 *.py[cod]
 *$py.class
+
+# Jupyter Notebook Checkpoints & Cache
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/*
+
+# Logs e Arquivos Temporários
+*.log
+*.sqlite3
+*.db
+*.tmp
+*.bak
+
+# Pytest e Cobertura
 .pytest_cache/
 .coverage
 htmlcov/
 
-# 💻 Configurações de IDE e Sistema Operacional
+# Configurações de IDE e SO
 .vscode/
 .idea/
+.DS_Store
 *.swp
 *.swo
-.DS_Store
-Thumbs.db
 
-# 📊 Dados Brutos e Arquivos CSV do Desafio
-data/raw/*.csv
-!data/raw/*.csv
-data/1-lh_nautical_csv/
-data/processed/*.csv
-!data/**/.gitkeep
-
-# 📝 Logs e Arquivos Temporários
-*.log
-*.tmp
-
-# =============================================================================
-# 🔒 PASTA BLOQUEADAS TEMPORARIAMENTE (NÃO ENVIAR NO MOMENTO)
-# =============================================================================
-1_Dashboard/
-2_Documentacao/
+# Relatórios PDF (não devem constar no repositório de código)
+*.pdf
+relatorios/

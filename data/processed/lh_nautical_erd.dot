@@ -1,0 +1,195 @@
+digraph LH_Nautical_ERD {
+    graph [
+        rankdir="LR",
+        splines="spline",
+        nodesep="0.7",
+        ranksep="1.1",
+        fontname="Helvetica, Arial, sans-serif",
+        fontsize="16",
+        dpi="300",
+        bgcolor="#FFFFFF",
+        pad="0.5"
+    ];
+
+    node [
+        shape="plain",
+        fontname="Helvetica, Arial, sans-serif",
+        fontsize="9"
+    ];
+
+    edge [
+        fontname="Helvetica, Arial, sans-serif",
+        fontsize="8",
+        color="#334155",
+        penwidth="1.6",
+        arrowsize="0.9"
+    ];
+
+    // =========================================================================
+    // GRUPO 1: CLIENTES & OPERAÇÃO
+    // =========================================================================
+    customers [label=<
+        <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" COLOR="#0284C7" STYLE="ROUNDED" BGCOLOR="#FFFFFF">
+            <TR><TD BGCOLOR="#0284C7" ALIGN="CENTER" COLSPAN="3"><FONT COLOR="#FFFFFF" POINT-SIZE="10"><B>customers [DIMENSÃO]</B></FONT></TD></TR>
+            <TR><TD BGCOLOR="#E0F2FE" PORT="id" ALIGN="LEFT"><FONT COLOR="#B91C1C"><B>PK</B></FONT></TD><TD BGCOLOR="#E0F2FE" ALIGN="LEFT"><B>id</B></TD><TD BGCOLOR="#E0F2FE" ALIGN="RIGHT"><FONT COLOR="#64748B">INTEGER</FONT></TD></TR>
+            <TR><TD ALIGN="LEFT"></TD><TD ALIGN="LEFT">first_name</TD><TD ALIGN="RIGHT"><FONT COLOR="#64748B">VARCHAR</FONT></TD></TR>
+            <TR><TD ALIGN="LEFT"></TD><TD ALIGN="LEFT">last_name</TD><TD ALIGN="RIGHT"><FONT COLOR="#64748B">VARCHAR</FONT></TD></TR>
+            <TR><TD ALIGN="LEFT"></TD><TD ALIGN="LEFT">customer_type</TD><TD ALIGN="RIGHT"><FONT COLOR="#64748B">VARCHAR</FONT></TD></TR>
+            <TR><TD ALIGN="LEFT"></TD><TD ALIGN="LEFT">email</TD><TD ALIGN="RIGHT"><FONT COLOR="#64748B">VARCHAR</FONT></TD></TR>
+            <TR><TD ALIGN="LEFT"></TD><TD ALIGN="LEFT">created_at</TD><TD ALIGN="RIGHT"><FONT COLOR="#64748B">TIMESTAMP</FONT></TD></TR>
+        </TABLE>
+    >];
+
+    locations [label=<
+        <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" COLOR="#475569" STYLE="ROUNDED" BGCOLOR="#FFFFFF">
+            <TR><TD BGCOLOR="#475569" ALIGN="CENTER" COLSPAN="3"><FONT COLOR="#FFFFFF" POINT-SIZE="10"><B>locations [LOJAS / CDS]</B></FONT></TD></TR>
+            <TR><TD BGCOLOR="#F1F5F9" PORT="id" ALIGN="LEFT"><FONT COLOR="#B91C1C"><B>PK</B></FONT></TD><TD BGCOLOR="#F1F5F9" ALIGN="LEFT"><B>id</B></TD><TD BGCOLOR="#F1F5F9" ALIGN="RIGHT"><FONT COLOR="#64748B">INTEGER</FONT></TD></TR>
+            <TR><TD ALIGN="LEFT"></TD><TD ALIGN="LEFT">name</TD><TD ALIGN="RIGHT"><FONT COLOR="#64748B">VARCHAR</FONT></TD></TR>
+            <TR><TD ALIGN="LEFT"></TD><TD ALIGN="LEFT">type</TD><TD ALIGN="RIGHT"><FONT COLOR="#64748B">VARCHAR</FONT></TD></TR>
+            <TR><TD ALIGN="LEFT"></TD><TD ALIGN="LEFT">is_active</TD><TD ALIGN="RIGHT"><FONT COLOR="#64748B">BOOLEAN</FONT></TD></TR>
+        </TABLE>
+    >];
+
+    employees [label=<
+        <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" COLOR="#475569" STYLE="ROUNDED" BGCOLOR="#FFFFFF">
+            <TR><TD BGCOLOR="#475569" ALIGN="CENTER" COLSPAN="3"><FONT COLOR="#FFFFFF" POINT-SIZE="10"><B>employees [VENDEDORES]</B></FONT></TD></TR>
+            <TR><TD BGCOLOR="#F1F5F9" PORT="id" ALIGN="LEFT"><FONT COLOR="#B91C1C"><B>PK</B></FONT></TD><TD BGCOLOR="#F1F5F9" ALIGN="LEFT"><B>id</B></TD><TD BGCOLOR="#F1F5F9" ALIGN="RIGHT"><FONT COLOR="#64748B">INTEGER</FONT></TD></TR>
+            <TR><TD ALIGN="LEFT"></TD><TD ALIGN="LEFT">first_name</TD><TD ALIGN="RIGHT"><FONT COLOR="#64748B">VARCHAR</FONT></TD></TR>
+            <TR><TD ALIGN="LEFT"><FONT COLOR="#1D4ED8"><B>FK</B></FONT></TD><TD PORT="location_id" ALIGN="LEFT">location_id</TD><TD ALIGN="RIGHT"><FONT COLOR="#64748B">INTEGER</FONT></TD></TR>
+            <TR><TD ALIGN="LEFT"></TD><TD ALIGN="LEFT">role</TD><TD ALIGN="RIGHT"><FONT COLOR="#64748B">VARCHAR</FONT></TD></TR>
+        </TABLE>
+    >];
+
+    // =========================================================================
+    // TABELAS FATO: ORDERS, ORDER_ITEMS & PAYMENTS
+    // =========================================================================
+    orders [label=<
+        <TABLE BORDER="2" CELLBORDER="0" CELLSPACING="0" COLOR="#0B2545" STYLE="ROUNDED" BGCOLOR="#FFFFFF">
+            <TR><TD BGCOLOR="#0B2545" ALIGN="CENTER" COLSPAN="3"><FONT COLOR="#FFFFFF" POINT-SIZE="11"><B>orders [FATO PEDIDOS]</B></FONT></TD></TR>
+            <TR><TD BGCOLOR="#E2E8F0" PORT="id" ALIGN="LEFT"><FONT COLOR="#B91C1C"><B>PK</B></FONT></TD><TD BGCOLOR="#E2E8F0" ALIGN="LEFT"><B>id</B></TD><TD BGCOLOR="#E2E8F0" ALIGN="RIGHT"><FONT COLOR="#64748B">INTEGER</FONT></TD></TR>
+            <TR><TD ALIGN="LEFT"></TD><TD ALIGN="LEFT">order_number</TD><TD ALIGN="RIGHT"><FONT COLOR="#64748B">VARCHAR(50)</FONT></TD></TR>
+            <TR><TD ALIGN="LEFT"><FONT COLOR="#1D4ED8"><B>FK</B></FONT></TD><TD PORT="customer_id" ALIGN="LEFT"><B>customer_id</B></TD><TD ALIGN="RIGHT"><FONT COLOR="#64748B">INTEGER</FONT></TD></TR>
+            <TR><TD ALIGN="LEFT"><FONT COLOR="#1D4ED8"><B>FK</B></FONT></TD><TD PORT="salesperson_id" ALIGN="LEFT"><B>salesperson_id</B></TD><TD ALIGN="RIGHT"><FONT COLOR="#64748B">INTEGER</FONT></TD></TR>
+            <TR><TD ALIGN="LEFT"><FONT COLOR="#1D4ED8"><B>FK</B></FONT></TD><TD PORT="location_id" ALIGN="LEFT"><B>location_id</B></TD><TD ALIGN="RIGHT"><FONT COLOR="#64748B">INTEGER</FONT></TD></TR>
+            <TR><TD ALIGN="LEFT"></TD><TD ALIGN="LEFT">channel</TD><TD ALIGN="RIGHT"><FONT COLOR="#64748B">VARCHAR(50)</FONT></TD></TR>
+            <TR><TD ALIGN="LEFT"></TD><TD ALIGN="LEFT">status</TD><TD ALIGN="RIGHT"><FONT COLOR="#64748B">VARCHAR(50)</FONT></TD></TR>
+            <TR><TD BGCOLOR="#FEF3C7" ALIGN="LEFT"><FONT COLOR="#B45309">★</FONT></TD><TD BGCOLOR="#FEF3C7" ALIGN="LEFT"><B>total</B></TD><TD BGCOLOR="#FEF3C7" ALIGN="RIGHT"><FONT COLOR="#B45309"><B>NUMERIC</B></FONT></TD></TR>
+            <TR><TD ALIGN="LEFT"></TD><TD ALIGN="LEFT">placed_at</TD><TD ALIGN="RIGHT"><FONT COLOR="#64748B">TIMESTAMP</FONT></TD></TR>
+        </TABLE>
+    >];
+
+    order_items [label=<
+        <TABLE BORDER="2" CELLBORDER="0" CELLSPACING="0" COLOR="#0B2545" STYLE="ROUNDED" BGCOLOR="#FFFFFF">
+            <TR><TD BGCOLOR="#0B2545" ALIGN="CENTER" COLSPAN="3"><FONT COLOR="#FFFFFF" POINT-SIZE="11"><B>order_items [FATO ITENS]</B></FONT></TD></TR>
+            <TR><TD BGCOLOR="#E2E8F0" PORT="id" ALIGN="LEFT"><FONT COLOR="#B91C1C"><B>PK</B></FONT></TD><TD BGCOLOR="#E2E8F0" ALIGN="LEFT"><B>id</B></TD><TD BGCOLOR="#E2E8F0" ALIGN="RIGHT"><FONT COLOR="#64748B">INTEGER</FONT></TD></TR>
+            <TR><TD ALIGN="LEFT"><FONT COLOR="#1D4ED8"><B>FK</B></FONT></TD><TD PORT="order_id" ALIGN="LEFT"><B>order_id</B></TD><TD ALIGN="RIGHT"><FONT COLOR="#64748B">INTEGER</FONT></TD></TR>
+            <TR><TD ALIGN="LEFT"><FONT COLOR="#1D4ED8"><B>FK</B></FONT></TD><TD PORT="product_variant_id" ALIGN="LEFT"><B>product_variant_id</B></TD><TD ALIGN="RIGHT"><FONT COLOR="#64748B">INTEGER</FONT></TD></TR>
+            <TR><TD BGCOLOR="#FEF3C7" ALIGN="LEFT"><FONT COLOR="#B45309">★</FONT></TD><TD BGCOLOR="#FEF3C7" ALIGN="LEFT"><B>quantity</B></TD><TD BGCOLOR="#FEF3C7" ALIGN="RIGHT"><FONT COLOR="#B45309"><B>INTEGER</B></FONT></TD></TR>
+            <TR><TD ALIGN="LEFT"></TD><TD ALIGN="LEFT">unit_price</TD><TD ALIGN="RIGHT"><FONT COLOR="#64748B">NUMERIC</FONT></TD></TR>
+            <TR><TD ALIGN="LEFT"></TD><TD ALIGN="LEFT">line_total</TD><TD ALIGN="RIGHT"><FONT COLOR="#64748B">NUMERIC</FONT></TD></TR>
+        </TABLE>
+    >];
+
+    payments [label=<
+        <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" COLOR="#1E293B" STYLE="ROUNDED" BGCOLOR="#FFFFFF">
+            <TR><TD BGCOLOR="#1E293B" ALIGN="CENTER" COLSPAN="3"><FONT COLOR="#FFFFFF" POINT-SIZE="10"><B>payments [PAGAMENTOS]</B></FONT></TD></TR>
+            <TR><TD BGCOLOR="#F1F5F9" PORT="id" ALIGN="LEFT"><FONT COLOR="#B91C1C"><B>PK</B></FONT></TD><TD BGCOLOR="#F1F5F9" ALIGN="LEFT"><B>id</B></TD><TD BGCOLOR="#F1F5F9" ALIGN="RIGHT"><FONT COLOR="#64748B">INTEGER</FONT></TD></TR>
+            <TR><TD ALIGN="LEFT"><FONT COLOR="#1D4ED8"><B>FK</B></FONT></TD><TD PORT="order_id" ALIGN="LEFT"><B>order_id</B></TD><TD ALIGN="RIGHT"><FONT COLOR="#64748B">INTEGER</FONT></TD></TR>
+            <TR><TD ALIGN="LEFT"></TD><TD ALIGN="LEFT">method</TD><TD ALIGN="RIGHT"><FONT COLOR="#64748B">VARCHAR</FONT></TD></TR>
+            <TR><TD ALIGN="LEFT"></TD><TD ALIGN="LEFT">amount</TD><TD ALIGN="RIGHT"><FONT COLOR="#64748B">NUMERIC</FONT></TD></TR>
+            <TR><TD ALIGN="LEFT"></TD><TD ALIGN="LEFT">status</TD><TD ALIGN="RIGHT"><FONT COLOR="#64748B">VARCHAR</FONT></TD></TR>
+            <TR><TD ALIGN="LEFT"></TD><TD ALIGN="LEFT">paid_at</TD><TD ALIGN="RIGHT"><FONT COLOR="#64748B">TIMESTAMP</FONT></TD></TR>
+        </TABLE>
+    >];
+
+    // =========================================================================
+    // CATÁLOGO: VARIANTES, PRODUTOS, CATEGORIAS E MARCAS
+    // =========================================================================
+    product_variants [label=<
+        <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" COLOR="#0D9488" STYLE="ROUNDED" BGCOLOR="#FFFFFF">
+            <TR><TD BGCOLOR="#0D9488" ALIGN="CENTER" COLSPAN="3"><FONT COLOR="#FFFFFF" POINT-SIZE="10"><B>product_variants</B></FONT></TD></TR>
+            <TR><TD BGCOLOR="#CCFBF1" PORT="id" ALIGN="LEFT"><FONT COLOR="#B91C1C"><B>PK</B></FONT></TD><TD BGCOLOR="#CCFBF1" ALIGN="LEFT"><B>id</B></TD><TD BGCOLOR="#CCFBF1" ALIGN="RIGHT"><FONT COLOR="#64748B">INTEGER</FONT></TD></TR>
+            <TR><TD ALIGN="LEFT"><FONT COLOR="#1D4ED8"><B>FK</B></FONT></TD><TD PORT="product_id" ALIGN="LEFT"><B>product_id</B></TD><TD ALIGN="RIGHT"><FONT COLOR="#64748B">INTEGER</FONT></TD></TR>
+            <TR><TD ALIGN="LEFT"></TD><TD ALIGN="LEFT">sku</TD><TD ALIGN="RIGHT"><FONT COLOR="#64748B">VARCHAR</FONT></TD></TR>
+            <TR><TD ALIGN="LEFT"></TD><TD ALIGN="LEFT">sale_price</TD><TD ALIGN="RIGHT"><FONT COLOR="#64748B">NUMERIC</FONT></TD></TR>
+            <TR><TD ALIGN="LEFT"></TD><TD ALIGN="LEFT">cost_price</TD><TD ALIGN="RIGHT"><FONT COLOR="#64748B">NUMERIC</FONT></TD></TR>
+            <TR><TD ALIGN="LEFT"></TD><TD ALIGN="LEFT">is_active</TD><TD ALIGN="RIGHT"><FONT COLOR="#64748B">BOOLEAN</FONT></TD></TR>
+        </TABLE>
+    >];
+
+    products [label=<
+        <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" COLOR="#0369A1" STYLE="ROUNDED" BGCOLOR="#FFFFFF">
+            <TR><TD BGCOLOR="#0369A1" ALIGN="CENTER" COLSPAN="3"><FONT COLOR="#FFFFFF" POINT-SIZE="10"><B>products [PRODUTOS]</B></FONT></TD></TR>
+            <TR><TD BGCOLOR="#E0F2FE" PORT="id" ALIGN="LEFT"><FONT COLOR="#B91C1C"><B>PK</B></FONT></TD><TD BGCOLOR="#E0F2FE" ALIGN="LEFT"><B>id</B></TD><TD BGCOLOR="#E0F2FE" ALIGN="RIGHT"><FONT COLOR="#64748B">INTEGER</FONT></TD></TR>
+            <TR><TD ALIGN="LEFT"></TD><TD ALIGN="LEFT">name</TD><TD ALIGN="RIGHT"><FONT COLOR="#64748B">VARCHAR</FONT></TD></TR>
+            <TR><TD ALIGN="LEFT"><FONT COLOR="#1D4ED8"><B>FK</B></FONT></TD><TD PORT="category_id" ALIGN="LEFT"><B>category_id</B></TD><TD ALIGN="RIGHT"><FONT COLOR="#64748B">INTEGER</FONT></TD></TR>
+            <TR><TD ALIGN="LEFT"><FONT COLOR="#1D4ED8"><B>FK</B></FONT></TD><TD PORT="brand_id" ALIGN="LEFT"><B>brand_id</B></TD><TD ALIGN="RIGHT"><FONT COLOR="#64748B">INTEGER</FONT></TD></TR>
+            <TR><TD ALIGN="LEFT"></TD><TD ALIGN="LEFT">unit_of_measure</TD><TD ALIGN="RIGHT"><FONT COLOR="#64748B">VARCHAR</FONT></TD></TR>
+        </TABLE>
+    >];
+
+    categories [label=<
+        <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" COLOR="#047857" STYLE="ROUNDED" BGCOLOR="#FFFFFF">
+            <TR><TD BGCOLOR="#047857" ALIGN="CENTER" COLSPAN="3"><FONT COLOR="#FFFFFF" POINT-SIZE="10"><B>categories [CATEGORIAS]</B></FONT></TD></TR>
+            <TR><TD BGCOLOR="#D1FAE5" PORT="id" ALIGN="LEFT"><FONT COLOR="#B91C1C"><B>PK</B></FONT></TD><TD BGCOLOR="#D1FAE5" ALIGN="LEFT"><B>id</B></TD><TD BGCOLOR="#D1FAE5" ALIGN="RIGHT"><FONT COLOR="#64748B">INTEGER</FONT></TD></TR>
+            <TR><TD ALIGN="LEFT"></TD><TD ALIGN="LEFT">name (Hélices...)</TD><TD ALIGN="RIGHT"><FONT COLOR="#64748B">VARCHAR</FONT></TD></TR>
+        </TABLE>
+    >];
+
+    brands [label=<
+        <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" COLOR="#047857" STYLE="ROUNDED" BGCOLOR="#FFFFFF">
+            <TR><TD BGCOLOR="#047857" ALIGN="CENTER" COLSPAN="3"><FONT COLOR="#FFFFFF" POINT-SIZE="10"><B>brands [MARCAS]</B></FONT></TD></TR>
+            <TR><TD BGCOLOR="#D1FAE5" PORT="id" ALIGN="LEFT"><FONT COLOR="#B91C1C"><B>PK</B></FONT></TD><TD BGCOLOR="#D1FAE5" ALIGN="LEFT"><B>id</B></TD><TD BGCOLOR="#D1FAE5" ALIGN="RIGHT"><FONT COLOR="#64748B">INTEGER</FONT></TD></TR>
+            <TR><TD ALIGN="LEFT"></TD><TD ALIGN="LEFT">name</TD><TD ALIGN="RIGHT"><FONT COLOR="#64748B">VARCHAR</FONT></TD></TR>
+            <TR><TD ALIGN="LEFT"></TD><TD ALIGN="LEFT">country</TD><TD ALIGN="RIGHT"><FONT COLOR="#64748B">VARCHAR</FONT></TD></TR>
+        </TABLE>
+    >];
+
+    // =========================================================================
+    // RELACIONAMENTOS ESTREITOS (CROW'S FOOT NOTATION: 1 para N)
+    // =========================================================================
+    customers:id -> orders:customer_id [
+        dir="both", arrowtail="tee", arrowhead="crow",
+        color="#0284C7", penwidth="2.0", label="  1 : N  "
+    ];
+
+    locations:id -> orders:location_id [
+        dir="both", arrowtail="tee", arrowhead="crow",
+        color="#64748B", penwidth="1.4"
+    ];
+
+    employees:id -> orders:salesperson_id [
+        dir="both", arrowtail="tee", arrowhead="crow",
+        color="#64748B", penwidth="1.4"
+    ];
+
+    orders:id -> order_items:order_id [
+        dir="both", arrowtail="tee", arrowhead="crow",
+        color="#0B2545", penwidth="2.2", label="  1 : N  "
+    ];
+
+    orders:id -> payments:order_id [
+        dir="both", arrowtail="tee", arrowhead="crow",
+        color="#1E293B", penwidth="1.8", label="  1 : N  "
+    ];
+
+    products:id -> product_variants:product_id [
+        dir="both", arrowtail="tee", arrowhead="crow",
+        color="#0369A1", penwidth="1.8", label="  1 : N  "
+    ];
+
+    product_variants:id -> order_items:product_variant_id [
+        dir="both", arrowtail="tee", arrowhead="crow",
+        color="#0D9488", penwidth="2.0", label="  1 : N  "
+    ];
+
+    categories:id -> products:category_id [
+        dir="both", arrowtail="tee", arrowhead="crow",
+        color="#047857", penwidth="1.8", label="  1 : N  "
+    ];
+
+    brands:id -> products:brand_id [
+        dir="both", arrowtail="tee", arrowhead="crow",
+        color="#047857", penwidth="1.4"
+    ];
+}

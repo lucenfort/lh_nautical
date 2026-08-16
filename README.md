@@ -1,66 +1,132 @@
-# ⚓ Desafio LH Nautical - Estrutura do Projeto
+# ⚓ LH Nautical — Plataforma de Engenharia de Dados, Analytics & IA
 
-**Desenvolvedor:** Luciano Silva de Arruda  
-**Programa:** Lighthouse (Indicium AI)  
-
----
-
-## 🎯 Sobre este Repositório
-
-Este repositório contém a resolução técnica completa, modularizada e reproduzível desenvolvida para o **Desafio LH Nautical**, integrante do processo seletivo do **Programa Lighthouse (Indicium AI)**.
+Plataforma de Engenharia de Dados, Modelagem Dimensional, Inteligência Preditiva e Visual Analytics desenvolvida para a **LH Nautical**, empresa multicanal do setor de varejo náutico (Lojas Físicas POS, E-commerce e Centro de Distribuição).
 
 ---
 
-## 📜 Créditos e Isenção de Responsabilidade
+## 📌 1. Visão Geral da Arquitetura
 
-> **📌 Nota de Propriedade Intelectual & Créditos:**  
-> Este projeto foi desenvolvido por **Luciano Silva de Arruda** como solução técnica para o Desafio Prático do **Programa Lighthouse 2026** promovido pela **Indicium AI** ([https://indicium.ai](https://indicium.ai)).  
-> Todos os direitos sobre os datasets brutos (`data/raw/`) e sobre a formulação dos estudos de caso pertencem originalmente à **Indicium AI**. A disponibilização dos arquivos neste repositório tem fins exclusivamente educacionais, de portfólio e de avaliação pública da resolução técnica.
-
----
-
-## 📁 Estrutura de Diretórios e Arquivos
+O projeto integra a jornada completa de dados da empresa a partir de **24 entidades relacionais do ERP (433.424 registros)** cobrindo o período transacional de **2020 a 2026**:
 
 ```
+                                ARQUITETURA DE DADOS LH NAUTICAL
+┌──────────────────────┐      ┌────────────────────────┐      ┌────────────────────────┐
+│   24 CSVs Brutos     │ ───► │  Inferência DDL / SQL  │ ───► │  Analytics & Modelos   │
+│   (data/raw/*.csv)   │      │  (Python Puro Stdlib)  │      │  (Séries & RecSys)     │
+└──────────────────────┘      └────────────────────────┘      └────────────────────────┘
+                                                                           │
+                                                                           ▼
+                                                              ┌────────────────────────┐
+                                                              │ Dashboards & Notebooks │
+                                                              │ (Streamlit / HTML / NB)│
+                                                              └────────────────────────┘
+```
+
+---
+
+## 📁 2. Estrutura do Repositório
+
+```text
 lh_nautical/
-├── README.md                              # Documentação principal e guia de desenvolvimento
-├── requirements.txt                        # Arquivo para dependências do projeto Python
-├── 1_Dashboard/                            # Camada de Visualização Executiva
-│   ├── dashboard_lh_nautical.html          # Template HTML do Dashboard Executivo
-│   └── README.md                           # Instruções para configuração e exibição do Dashboard
-├── 2_Documentacao/                         # Documentação e Relatórios
-│   ├── relatorio_tecnico_executivo.md      # Modelo de Relatório Técnico/Executivo
-│   ├── der_modelo_dados.mermaid            # Diagrama Entidade-Relacionamento (DER)
-│   └── mapa_stakeholders.md                # Diretrizes de alinhamento com a diretoria
-├── 3_Codigos_e_Scripts/                    # Scripts de Desenvolvimento
-│   ├── 1_ingestao_e_limpeza.py             # Script para ingestão, tratamento e carga no BD
-│   ├── 2_analise_e_sql.sql                 # Queries SQL para respostas de negócio (Q4, Q5, Q6)
-│   └── 3_modelagem_preditiva.py            # Scripts de Ciência de Dados e IA (Demanda & Recomendações)
-└── data/                                   # Diretório de Armazenamento de Dados
-    ├── raw/                                # Arquivos CSV brutos (extraídos de 1-lh_nautical_csv.zip)
-    └── processed/                          # Diretório reservado para o banco de dados gerado (.db)
+├── data/
+│   ├── raw/                 # 24 arquivos CSV brutos do ERP náutico
+│   └── processed/           # Gráficos analíticos e artefatos de dados
+├── src/
+│   ├── 0_eda_orders.py      # Auditoria transacional e análise descritiva (EDA)
+│   ├── 1_gerar_schema.py    # Gerador de DDL PostgreSQL em Python puro (stdlib)
+│   ├── 2_carregar_dados.py  # Ingestão de dados e validação de volumetria
+│   ├── 4_modelo_demanda.py  # Modelagem preditiva baseline de demanda (Média Móvel 3M)
+│   ├── 5_sistema_recomendacao.py # Motor de recomendação item-item (Cosine Similarity)
+│   ├── gerar_todos_graficos.py   # Gerador de gráficos analíticos em alta resolução
+│   └── gerar_notebook.py    # Construtor e executor do Jupyter Notebook
+├── sql/
+│   ├── schema.sql           # DDL completo das 24 tabelas relacionais (PostgreSQL 16)
+│   ├── 3_analise_sql.sql    # Queries analíticas (Clientes Fiéis e Dimensão Calendário)
+│   ├── q4_clientes_fieis.sql# Query modular de clientes VIP e categorias
+│   └── q5_calendario_pos.sql# Query modular de série temporal e vendas presenciais
+├── notebooks/
+│   └── analise_e_modelagem_lh_nautical.ipynb # Notebook executivo com saídas renderizadas
+├── dashboard/
+│   ├── app.py               # Aplicação interativa em Streamlit (5 abas analíticas)
+│   ├── dashboard_lh_nautical.html # Dashboard standalone autônomo (HTML5 + Chart.js)
+│   └── README.md            # Documentação da suite de dashboards
+├── tests/
+│   ├── conftest.py          # Fixtures e configurações do Pytest
+│   ├── test_data_integrity.py     # Testes de integridade volumétrica e estatística
+│   ├── test_schema_generation.py  # Teste de conformidade estrita do gerador DDL
+│   └── test_models_and_analytics.py # Testes matemáticos de ML e séries temporais
+├── requirements.txt         # Dependências do ecossistema Python
+└── .gitignore               # Configuração de arquivos ignorados no versionamento
 ```
 
 ---
 
-## 🛠️ Passo a Passo para Desenvolvimento
+## ⚙️ 3. Configuração do Ambiente
 
-1. **Instalação das Dependências:**
-   Adicione as bibliotecas necessárias em `requirements.txt` e instale no ambiente virtual:
-   ```bash
-   python3 -m venv .venv
-   source .venv/bin/activate
-   pip install -r requirements.txt
-   ```
+### Pré-requisitos
+- Python 3.12+
+- Git
 
-2. **Ingestão e Tratamento de Dados:**
-   Implemente a lógica de leitura dos CSVs da pasta `data/raw/` e geração da base tratada em `3_Codigos_e_Scripts/1_ingestao_e_limpeza.py`.
+### Instalação
 
-3. **Consultas SQL e Analytics:**
-   Desenvolva as queries em `3_Codigos_e_Scripts/2_analise_e_sql.sql` utilizando CTEs (`WITH ... AS`).
+```bash
+# 1. Clone o repositório
+git clone https://github.com/lucenfort/lh_nautical.git
+cd lh_nautical
 
-4. **Modelagem Preditiva (IA):**
-   Crie os modelos em `3_Codigos_e_Scripts/3_modelagem_preditiva.py`.
+# 2. Crie e ative o ambiente virtual
+python3 -m venv .venv
+source .venv/bin/activate  # Linux/macOS
+# .venv\Scripts\activate   # Windows
 
-5. **Preenchimento dos Relatórios e Dashboard:**
-   Preencha `2_Documentacao/relatorio_tecnico_executivo.md` e monte as visualizações em `1_Dashboard/dashboard_lh_nautical.html`.
+# 3. Instale as dependências
+pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+---
+
+## 🚀 4. Execução dos Componentes
+
+### 4.1 Execução de Testes Automatizados
+```bash
+pytest -v
+```
+
+### 4.2 Execução dos Scripts Analíticos
+```bash
+# Análise exploratória inicial (EDA)
+python3 src/0_eda_orders.py
+
+# Geração do schema PostgreSQL DDL (Python puro)
+python3 src/1_gerar_schema.py
+
+# Ingestão e conferência volumétrica
+python3 src/2_carregar_dados.py
+
+# Modelo preditivo de demanda (Bússola de Bordo 702)
+python3 src/4_modelo_demanda.py
+
+# Sistema de recomendação (Motor de Popa 1949)
+python3 src/5_sistema_recomendacao.py
+```
+
+### 4.3 Visualização do Dashboard Interativo (Streamlit)
+
+```bash
+streamlit run dashboard/app.py
+```
+Acesse no navegador: `http://localhost:8501`
+
+### 4.4 Execução do Jupyter Notebook
+```bash
+jupyter notebook notebooks/analise_e_modelagem_lh_nautical.ipynb
+```
+
+---
+
+## 👨‍💻 Autor
+
+- **Luciano Silva de Arruda**
+- Repositório Oficial: [`https://github.com/lucenfort/lh_nautical`](https://github.com/lucenfort/lh_nautical)
+
