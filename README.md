@@ -138,9 +138,9 @@ jupyter notebook notebooks/analise_e_modelagem_lh_nautical.ipynb
 
 ---
 
-## 📜 Créditos & Dados
+## 📜 Créditos & Conjunto de Dados
 
-Os dados transacionais e entidades do ERP utilizados neste projeto foram disponibilizados para fins de estudo, engenharia e modelagem analítica pela **Indicium**.
+Os **24 arquivos CSV brutos** (`data/raw/*.csv`) que compõem a base relacional do ERP fictício da *LH Nautical* foram disponibilizados pela **Indicium** para o Desafio Prático do **Programa Lighthouse** (Programa Trainee em Dados, IA e Negócios Tech). Toda a modelagem relacional, inferência de DDL, pipelines de engenharia, modelos preditivos, suíte de testes e visual analytics foram integralmente desenvolvidos pelo autor.
 
 ---
 
