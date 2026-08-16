@@ -210,7 +210,7 @@ def gerar_grafico_3():
     top10_fieis["ranking"] = top10_fieis.index + 1
     
     fig, ax = plt.subplots(figsize=(11.5, 6))
-    y_labels = [f"#{r['ranking']} Cliente {r['customer_id']}" for _, r in top10_fieis.iterrows()]
+    y_labels = [f"#{int(r['ranking'])} Cliente #{int(r['customer_id'])}" for _, r in top10_fieis.iterrows()]
     y_pos = np.arange(len(top10_fieis))
     
     bars = ax.barh(y_pos, top10_fieis["ticket_medio"], color=C_STEEL_BLUE, height=0.62, edgecolor=C_WHITE)
@@ -229,7 +229,7 @@ def gerar_grafico_3():
     for i, bar in enumerate(bars):
         row = top10_fieis.iloc[i]
         val = row["ticket_medio"]
-        lbl = f"R$ {val:,.2f}  ({row['frequencia']} pedidos | {row['diversidade_categorias']} categorias)"
+        lbl = f"R$ {val:,.2f}  ({int(row['frequencia'])} pedidos | {int(row['diversidade_categorias'])} categorias)"
         ax.text(val + 600, bar.get_y() + bar.get_height()/2, lbl, va='center', ha='left', fontsize=8.8, fontweight='bold', color=C_NAVY_DARK)
     
     ax.set_title("Top 10 Clientes de Alta Fidelidade — Ranking por Ticket Médio", fontsize=13, fontweight='bold', color=C_NAVY_DARK, pad=16)
