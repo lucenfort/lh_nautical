@@ -30,6 +30,8 @@ htmlcov/
 *.swp
 *.swo
 
-# Relatórios PDF (não devem constar no repositório de código)
+# Relatórios PDF e Documentação Interna (não devem constar no repositório público)
 *.pdf
 relatorios/
+docs/
+
