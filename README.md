@@ -3,10 +3,6 @@
 
   <br/><br/>
 
-  [![Python 3.12](https://img.shields.io/badge/Python-3.12-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
-  [![PostgreSQL 16](https://img.shields.io/badge/PostgreSQL-16-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
-  [![Streamlit Enterprise](https://img.shields.io/badge/Streamlit-App-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)](https://streamlit.io/)
-
   <p align="center">
     <strong>Plataforma de Engenharia de Dados, Modelagem Dimensional, Inteligência Preditiva e Visual Analytics</strong><br/>
     Desenvolvida para a empresa de varejo náutico multicanal <strong>LH Nautical</strong>.
