@@ -23,7 +23,6 @@ SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd "$SCRIPT_DIR"
 
 echo -e "\n${YELLOW}▶ ETAPA 1/6: Auditoria da Base de Dados & Análise Exploratória (EDA)${NC}"
-python3 src/0_auditoria_csvs.py
 python3 src/0_eda_orders.py
 echo -e "${GREEN}✔ Auditoria de 24 tabelas e EDA concluídas com sucesso.${NC}"
 

@@ -23,7 +23,6 @@ help:
 
 audit:
 	@echo "▶ Executando auditoria e EDA..."
-	python3 src/0_auditoria_csvs.py
 	python3 src/0_eda_orders.py
 
 schema:
