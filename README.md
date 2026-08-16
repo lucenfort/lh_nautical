@@ -6,8 +6,6 @@
   [![Python 3.12](https://img.shields.io/badge/Python-3.12-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
   [![PostgreSQL 16](https://img.shields.io/badge/PostgreSQL-16-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
   [![Streamlit Enterprise](https://img.shields.io/badge/Streamlit-App-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)](https://streamlit.io/)
-  [![Pytest Passed](https://img.shields.io/badge/Pytest-14%2F14%20Passed%20(100%25)-2EA44F?style=for-the-badge&logo=pytest&logoColor=white)](https://docs.pytest.org/)
-  [![License](https://img.shields.io/badge/License-MIT-00F5D4?style=for-the-badge)](LICENSE)
 
   <p align="center">
     <strong>Plataforma de Engenharia de Dados, Modelagem Dimensional, Inteligência Preditiva e Visual Analytics</strong><br/>
