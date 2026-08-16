@@ -1,0 +1,243 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 360" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradients -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#060d1f" />
+      <stop offset="50%" stop-color="#0b1a3a" />
+      <stop offset="100%" stop-color="#040814" />
+    </linearGradient>
+
+    <linearGradient id="glowGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00D2FF" stop-opacity="0.8" />
+      <stop offset="50%" stop-color="#00F5D4" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#3A86FF" stop-opacity="0.8" />
+    </linearGradient>
+
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#14244d" stop-opacity="0.75" />
+      <stop offset="100%" stop-color="#0a1226" stop-opacity="0.85" />
+    </linearGradient>
+
+    <linearGradient id="shimmerGrad" x1="-100%" y1="0%" x2="200%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0" />
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+    </linearGradient>
+
+    <!-- Filters -->
+    <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <!-- Clip Paths -->
+    <clipPath id="bannerClip">
+      <rect x="0" y="0" width="1000" height="360" rx="16" />
+    </clipPath>
+  </defs>
+
+  <style>
+    @keyframes pulseOrb {
+      0%, 100% { transform: scale(1) translate(0, 0); opacity: 0.35; }
+      50% { transform: scale(1.18) translate(-10px, 8px); opacity: 0.65; }
+    }
+    @keyframes pulseBeacon {
+      0%, 100% { opacity: 0.3; transform: scale(0.95); }
+      50% { opacity: 0.9; transform: scale(1.08); }
+    }
+    @keyframes waveFloat {
+      0% { transform: translateX(0); }
+      50% { transform: translateX(-40px); }
+      100% { transform: translateX(0); }
+    }
+    @keyframes waveFloatReverse {
+      0% { transform: translateX(0); }
+      50% { transform: translateX(35px); }
+      100% { transform: translateX(0); }
+    }
+    @keyframes shimmerMove {
+      0% { transform: translateX(-300px); }
+      100% { transform: translateX(1000px); }
+    }
+    @keyframes radarSpin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .orb-1 { animation: pulseOrb 8s ease-in-out infinite; transform-origin: 150px 100px; }
+    .orb-2 { animation: pulseOrb 10s ease-in-out infinite reverse; transform-origin: 850px 260px; }
+    .beacon-light { animation: pulseBeacon 3s ease-in-out infinite; transform-origin: 900px 80px; }
+    .wave-back { animation: waveFloat 12s ease-in-out infinite; }
+    .wave-front { animation: waveFloatReverse 9s ease-in-out infinite; }
+    .shimmer-line { animation: shimmerMove 4s linear infinite; }
+    .radar-sweep { animation: radarSpin 10s linear infinite; transform-origin: 900px 80px; }
+
+    .title-text { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Plus Jakarta Sans', Roboto, sans-serif; font-weight: 800; }
+    .body-text { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Plus Jakarta Sans', Roboto, sans-serif; font-weight: 400; }
+    .mono-text { font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Fira Code', monospace; }
+  </style>
+
+  <g clip-path="url(#bannerClip)">
+    <!-- Base Background -->
+    <rect x="0" y="0" width="1000" height="360" fill="url(#bgGrad)" />
+
+    <!-- Ambient Glowing Orbs -->
+    <circle cx="150" cy="90" r="160" fill="#00D2FF" opacity="0.25" class="orb-1" filter="url(#neonGlow)" />
+    <circle cx="850" cy="240" r="180" fill="#7B2CBF" opacity="0.2" class="orb-2" filter="url(#neonGlow)" />
+    <circle cx="500" cy="40" r="120" fill="#00F5D4" opacity="0.15" class="orb-1" filter="url(#neonGlow)" />
+
+    <!-- Technical Grid Pattern -->
+    <g opacity="0.08" stroke="#00D2FF" stroke-width="1">
+      <line x1="0" y1="60" x2="1000" y2="60" />
+      <line x1="0" y1="120" x2="1000" y2="120" />
+      <line x1="0" y1="180" x2="1000" y2="180" />
+      <line x1="0" y1="240" x2="1000" y2="240" />
+      <line x1="0" y1="300" x2="1000" y2="300" />
+      <line x1="100" y1="0" x2="100" y2="360" />
+      <line x1="250" y1="0" x2="250" y2="360" />
+      <line x1="400" y1="0" x2="400" y2="360" />
+      <line x1="550" y1="0" x2="550" y2="360" />
+      <line x1="700" y1="0" x2="700" y2="360" />
+      <line x1="850" y1="0" x2="850" y2="360" />
+    </g>
+
+    <!-- Nautical Radar / Lighthouse System on Right -->
+    <g opacity="0.6">
+      <circle cx="900" cy="80" r="60" fill="none" stroke="#00D2FF" stroke-width="1" stroke-dasharray="3 3" opacity="0.4" />
+      <circle cx="900" cy="80" r="100" fill="none" stroke="#00D2FF" stroke-width="1" stroke-dasharray="4 4" opacity="0.3" />
+      <circle cx="900" cy="80" r="140" fill="none" stroke="#00D2FF" stroke-width="1" stroke-opacity="0.15" />
+      
+      <!-- Radar Scanner Sweep -->
+      <g class="radar-sweep">
+        <path d="M900,80 L990,20 A100,100 0 0,0 900,-20 Z" fill="url(#glowGrad1)" opacity="0.15" />
+      </g>
+      
+      <!-- Lighthouse Beacon Point -->
+      <circle cx="900" cy="80" r="5" fill="#00F5D4" class="beacon-light" filter="url(#neonGlow)" />
+    </g>
+
+    <!-- Fluid Nautical Waves -->
+    <g opacity="0.35" class="wave-back">
+      <path d="M-100,310 C150,280 350,330 600,295 C850,260 1050,315 1200,290 L1200,380 L-100,380 Z" fill="#0c234b" />
+    </g>
+    <g opacity="0.45" class="wave-front">
+      <path d="M-100,325 C200,345 450,295 750,335 C950,315 1100,330 1200,320 L1200,380 L-100,380 Z" fill="#091b38" />
+    </g>
+
+    <!-- Top Glow Accent Line with Shimmer -->
+    <rect x="0" y="0" width="1000" height="3" fill="url(#glowGrad1)" />
+    <rect x="0" y="0" width="250" height="3" fill="url(#shimmerGrad)" class="shimmer-line" />
+
+    <!-- Top Badge / Header Tag -->
+    <g transform="translate(60, 42)">
+      <!-- Indicium & Lighthouse Tag -->
+      <rect x="0" y="0" width="290" height="28" rx="14" fill="#102147" stroke="#00D2FF" stroke-opacity="0.4" stroke-width="1" />
+      <circle cx="14" cy="14" r="5" fill="#00F5D4" filter="url(#softGlow)" />
+      <text x="28" y="18" fill="#E2E8F0" font-size="11.5" class="title-text" letter-spacing="1">
+        INDICIUM AI • LIGHTHOUSE 2026
+      </text>
+    </g>
+
+    <!-- Main Title: LH NAUTICAL -->
+    <g transform="translate(60, 118)">
+      <!-- Nautical Anchor Icon -->
+      <g transform="translate(0, -32) scale(0.95)">
+        <path d="M22 6 A4 4 0 1 0 22 14 A4 4 0 1 0 22 6 Z M22 14 L22 36 M12 22 L32 22 M8 26 C8 37 16 42 22 42 C28 42 36 37 36 26" 
+              fill="none" stroke="#00F5D4" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" filter="url(#softGlow)"/>
+      </g>
+      
+      <text x="50" y="5" fill="#FFFFFF" font-size="44" class="title-text" letter-spacing="2">
+        LH NAUTICAL
+      </text>
+      <text x="385" y="5" fill="#00D2FF" font-size="44" class="title-text" letter-spacing="2" filter="url(#softGlow)">
+        AI
+      </text>
+    </g>
+
+    <!-- Subtitle -->
+    <text x="60" y="162" fill="#94A3B8" font-size="16" class="body-text" letter-spacing="0.5">
+      Plataforma de Engenharia de Dados, Modelagem Dimensional &amp; Inteligência Preditiva
+    </text>
+
+    <!-- Metrics & Technology Cards Container -->
+    <g transform="translate(60, 195)">
+      <!-- Card 1: Pipeline & Ingestão -->
+      <g transform="translate(0, 0)">
+        <rect x="0" y="0" width="195" height="74" rx="10" fill="url(#cardGrad)" stroke="#1E3A8A" stroke-width="1" />
+        <text x="16" y="24" fill="#00D2FF" font-size="11" class="title-text" letter-spacing="0.8">DATA LAKEHOUSE</text>
+        <text x="16" y="46" fill="#FFFFFF" font-size="17" class="title-text">24 Tabelas ERP</text>
+        <text x="16" y="62" fill="#64748B" font-size="11" class="mono-text">433k Linhas Ingeridas</text>
+      </g>
+
+      <!-- Card 2: DDL & SQL -->
+      <g transform="translate(210, 0)">
+        <rect x="0" y="0" width="195" height="74" rx="10" fill="url(#cardGrad)" stroke="#1E3A8A" stroke-width="1" />
+        <text x="16" y="24" fill="#00F5D4" font-size="11" class="title-text" letter-spacing="0.8">POSTGRESQL 16</text>
+        <text x="16" y="46" fill="#FFFFFF" font-size="17" class="title-text">DDL Python Puro</text>
+        <text x="16" y="62" fill="#64748B" font-size="11" class="mono-text">Zero Libs Proibidas</text>
+      </g>
+
+      <!-- Card 3: Séries & IA -->
+      <g transform="translate(420, 0)">
+        <rect x="0" y="0" width="205" height="74" rx="10" fill="url(#cardGrad)" stroke="#1E3A8A" stroke-width="1" />
+        <text x="16" y="24" fill="#F59E0B" font-size="11" class="title-text" letter-spacing="0.8">APPLIED MACHINE LEARNING</text>
+        <text x="16" y="46" fill="#FFFFFF" font-size="17" class="title-text">Demand &amp; RecSys</text>
+        <text x="16" y="62" fill="#64748B" font-size="11" class="mono-text">Média Móvel + Cosseno</text>
+      </g>
+
+      <!-- Card 4: Dashboard & Testes -->
+      <g transform="translate(640, 0)">
+        <rect x="0" y="0" width="240" height="74" rx="10" fill="url(#cardGrad)" stroke="#1E3A8A" stroke-width="1" />
+        <text x="16" y="24" fill="#A855F7" font-size="11" class="title-text" letter-spacing="0.8">EXECUTIVE BI &amp; QA</text>
+        <text x="16" y="46" fill="#FFFFFF" font-size="17" class="title-text">Streamlit &amp; Pytest</text>
+        <text x="16" y="62" fill="#10B981" font-size="11" class="mono-text">✔ 14/14 Testes 100% OK</text>
+      </g>
+    </g>
+
+    <!-- Bottom Status Badges Row -->
+    <g transform="translate(60, 305)">
+      <rect x="0" y="0" width="880" height="34" rx="8" fill="#081126" stroke="#172554" stroke-width="1" opacity="0.9" />
+      
+      <!-- Feature Pills -->
+      <g transform="translate(18, 21)">
+        <circle cx="0" cy="-3" r="4" fill="#10B981" />
+        <text x="10" y="1" fill="#CBD5E1" font-size="11.5" class="title-text">Python 3.12</text>
+      </g>
+      
+      <g transform="translate(140, 21)">
+        <circle cx="0" cy="-3" r="4" fill="#3B82F6" />
+        <text x="10" y="1" fill="#CBD5E1" font-size="11.5" class="title-text">PostgreSQL DDL</text>
+      </g>
+
+      <g transform="translate(290, 21)">
+        <circle cx="0" cy="-3" r="4" fill="#EC4899" />
+        <text x="10" y="1" fill="#CBD5E1" font-size="11.5" class="title-text">Streamlit Enterprise</text>
+      </g>
+
+      <g transform="translate(470, 21)">
+        <circle cx="0" cy="-3" r="4" fill="#F59E0B" />
+        <text x="10" y="1" fill="#CBD5E1" font-size="11.5" class="title-text">Time Series &amp; Cosine Sim</text>
+      </g>
+
+      <g transform="translate(690, 21)">
+        <circle cx="0" cy="-3" r="4" fill="#00F5D4" />
+        <text x="10" y="1" fill="#CBD5E1" font-size="11.5" class="title-text">Relatório Executivo PDF</text>
+      </g>
+    </g>
+
+    <!-- Subtle Border Around Banner -->
+    <rect x="0" y="0" width="1000" height="360" rx="16" fill="none" stroke="#1e3a8a" stroke-width="1.5" stroke-opacity="0.6" />
+  </g>
+</svg>
