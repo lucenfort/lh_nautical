@@ -142,11 +142,11 @@
 
     <!-- Top Badge / Header Tag -->
     <g transform="translate(60, 42)">
-      <!-- Indicium & Lighthouse Tag -->
-      <rect x="0" y="0" width="290" height="28" rx="14" fill="#102147" stroke="#00D2FF" stroke-opacity="0.4" stroke-width="1" />
+      <!-- Technical Scope Tag -->
+      <rect x="0" y="0" width="310" height="28" rx="14" fill="#102147" stroke="#00D2FF" stroke-opacity="0.4" stroke-width="1" />
       <circle cx="14" cy="14" r="5" fill="#00F5D4" filter="url(#softGlow)" />
       <text x="28" y="18" fill="#E2E8F0" font-size="11.5" class="title-text" letter-spacing="1">
-        INDICIUM AI • LIGHTHOUSE 2026
+        DATA ENGINEERING &amp; APPLIED AI
       </text>
     </g>
 

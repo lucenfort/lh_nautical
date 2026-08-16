@@ -7,11 +7,11 @@
   [![PostgreSQL 16](https://img.shields.io/badge/PostgreSQL-16-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
   [![Streamlit Enterprise](https://img.shields.io/badge/Streamlit-App-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)](https://streamlit.io/)
   [![Pytest Passed](https://img.shields.io/badge/Pytest-14%2F14%20Passed%20(100%25)-2EA44F?style=for-the-badge&logo=pytest&logoColor=white)](https://docs.pytest.org/)
-  [![Indicium Lighthouse](https://img.shields.io/badge/Indicium%20AI-Lighthouse%202026-00D2FF?style=for-the-badge)](https://www.indicium.tech/)
+  [![License](https://img.shields.io/badge/License-MIT-00F5D4?style=for-the-badge)](LICENSE)
 
   <p align="center">
     <strong>Plataforma de Engenharia de Dados, Modelagem Dimensional, Inteligência Preditiva e Visual Analytics</strong><br/>
-    Desenvolvida para o <strong>Desafio Técnico LH Nautical</strong> — Programa Lighthouse (Turma 10/2026 — Indicium AI).
+    Desenvolvida para a empresa de varejo náutico multicanal <strong>LH Nautical</strong>.
   </p>
 </div>
 
@@ -135,6 +135,12 @@ Acesse no navegador: `http://localhost:8501`
 ```bash
 jupyter notebook notebooks/analise_e_modelagem_lh_nautical.ipynb
 ```
+
+---
+
+## 📜 Créditos & Dados
+
+Os dados transacionais e entidades do ERP utilizados neste projeto foram disponibilizados para fins de estudo, engenharia e modelagem analítica pela **Indicium**.
 
 ---
 
