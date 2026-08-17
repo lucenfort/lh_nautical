@@ -55,7 +55,6 @@ lh_nautical/
 │   └── analise_e_modelagem_lh_nautical.ipynb # Notebook executivo com saídas renderizadas
 ├── dashboard/
 │   ├── app.py               # Aplicação interativa em Streamlit (5 abas analíticas)
-│   ├── dashboard_lh_nautical.html # Dashboard standalone autônomo (HTML5 + Chart.js)
 │   └── README.md            # Documentação da suite de dashboards
 ├── tests/
 │   ├── conftest.py          # Fixtures e configurações do Pytest
